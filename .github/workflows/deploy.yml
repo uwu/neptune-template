@@ -29,7 +29,8 @@ jobs:
                 for plugin in plugins/*
                 do
                   cd $plugin
-                  pnpm install || true
+                  pnpm install
+                  cd ../..
                 done
 
             - name: Build plugin(s)
