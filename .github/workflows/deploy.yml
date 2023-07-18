@@ -23,6 +23,11 @@ jobs:
               run: |
                 npm i -g pnpm
                 pnpm i
+                for plugin in plugins/*
+                do
+                  cd $plugin
+                  pnpm install
+                done
 
             - name: Build plugin(s)
               run: |
@@ -30,9 +35,7 @@ jobs:
                   pnpm run build
                   for plugin in plugins/*
                   do
-                    cd $plugin
-                    pnpm install
-                    cp -r ./dist ../../.dist/$(basename $plugin)
+                    cp -r $plugin/dist .dist/$(basename $plugin)
                   done
 
             - name: Deploy to GitHub Pages
