@@ -2,6 +2,7 @@ const esbuild = require("esbuild");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+const repl = require("repl");
 
 const plugins = fs.readdirSync("./plugins");
 for (const plugin of plugins) {
@@ -22,7 +23,12 @@ for (const plugin of plugins) {
       minify: true,
       format: "esm",
       // Make every node builtin external while still bundling for browsers.
-      external: [...require("repl")._builtinLibs, "@neptune", "@plugin"],
+      external: [
+        ...repl._builtinLibs,
+        ...repl._builtinLibs.map((m) => "node:" + m),
+        "@neptune",
+        "@plugin",
+      ],
       platform: "browser",
       outfile,
     })
