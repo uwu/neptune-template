@@ -6,6 +6,7 @@
     "build": "node ./build.js"
   },
   "devDependencies": {
-    "esbuild": "^0.18.13"
+    "esbuild": "^0.18.13",
+    "neptune-types": "^1.0.0"
   }
 }
