@@ -74,8 +74,6 @@ for (const plugin of plugins) {
       format: "esm",
       // Make every node builtin external while still bundling for browsers.
       external: [
-        ...repl._builtinLibs,
-        ...repl._builtinLibs.map((m) => "node:" + m),
         "@neptune",
         "@plugin",
       ],
