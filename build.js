@@ -46,6 +46,7 @@ for (const plugin of plugins) {
                   platform: "node",
                   write: false,
                   metafile: true,
+                  bundle: true,
                   external: nativeExternals
                 });
 
