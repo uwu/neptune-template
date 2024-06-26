@@ -4,6 +4,8 @@ const path = require("path");
 const crypto = require("crypto");
 const repl = require("repl");
 
+const nativeExternals = ["@neptune", "@plugin", "electron"]
+
 const plugins = fs.readdirSync("./plugins");
 for (const plugin of plugins) {
   let pluginPath = path.join("./plugins/", plugin);
@@ -34,6 +36,7 @@ for (const plugin of plugins) {
                   format: "iife",
                   globalName: "neptuneExports",
                   write: false,
+                  external: nativeExternals
                 });
 
                 const outputCode = result.outputFiles[0].text;
@@ -44,6 +47,7 @@ for (const plugin of plugins) {
                   platform: "node",
                   write: false,
                   metafile: true,
+                  external: nativeExternals
                 });
 
                 const builtExports = Object.values(metafile.outputs)[0].exports;
