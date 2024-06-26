@@ -46,9 +46,9 @@ for (const plugin of plugins) {
                   platform: "node",
                   write: false,
                   metafile: true,
-                  bundle: true,
+                  bundle: true, // I find it annoying that I have to enable bundling.
+                  format: "esm", // This avoids exports not being properly defined, thus you do not need to change log levels.
                   external: nativeExternals,
-                  logLevel: "silent"
                 });
 
                 const builtExports = Object.values(metafile.outputs)[0].exports;
