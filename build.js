@@ -2,7 +2,6 @@ const esbuild = require("esbuild");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
-const repl = require("repl");
 
 const nativeExternals = ["@neptune", "@plugin", "electron"]
 
@@ -76,7 +75,6 @@ for (const plugin of plugins) {
       bundle: true,
       minify: true,
       format: "esm",
-      // Make every node builtin external while still bundling for browsers.
       external: [
         "@neptune",
         "@plugin",
