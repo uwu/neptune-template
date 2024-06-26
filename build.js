@@ -47,7 +47,8 @@ for (const plugin of plugins) {
                   write: false,
                   metafile: true,
                   bundle: true,
-                  external: nativeExternals
+                  external: nativeExternals,
+                  logLevel: "silent"
                 });
 
                 const builtExports = Object.values(metafile.outputs)[0].exports;
